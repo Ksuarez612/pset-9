@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>APCSP Game Suite</title>
     <link rel="stylesheet" href="css/styles.css">
+    <
   </head>
   <body>
     <center>
@@ -14,10 +15,39 @@
       <center>
       <li> <a href="index.html"> Home </li>
       <li id="logo"> Tic Tac Toe</li>
-      <li> <a href="ultimate_tic_tac_toe.html">Ultimate Tic Tac Toe</a> </li>
-      <li> <a href="checkers.html">Checkers</a> </li>
+      <li> <a href="brick_breaker.html">Brick Breaker</a> </li>
+      <li> <a href="connect_four.html">Connect Four</a> </li>
       </center>
     </nav>
   </div>
+  <h1>Tic-Tac-Toe</h1>
+    <table id = "table">
+      <tr>
+        <th class = "wins">X Wins</th>
+        <th class = "wins">Ties</th>
+        <th class = "wins">O Wins</th>
+      </tr>
+      <tr>
+        <td id="x_score">0</td>
+        <td id="tie_score">0</td>
+        <td id="o_score">0</td>
+      </tr>
+    </table>
+    <div class="container column">
+      <h2>Turn: X</h2>
+      <div class="container wrap" id="board">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
+    <div id="reset-scoreboard">Reset Scoreboard</div>
+    <div id="reset-button">Play Again!</div>
+    </div>
   </body>
 </html>
