@@ -55,11 +55,11 @@ h1 {
   font-variant: normal;
   text-transform: uppercase;
 }
- #body {
+ body {
    background-color: #585858;
  }
 
-body {
+ #body {
   text-align: center;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 50px;
@@ -71,10 +71,10 @@ body {
   font-style: normal;
   font-variant: normal;
   text-transform: none;;
-  background-color: #999999;
+  background-color: #585858;
 }
 
-h1 {
+  #h1 {
   margin: 0 auto;
   font-family: "Arial Black", Gadget, sans-serif;
   font-size: 38px;
