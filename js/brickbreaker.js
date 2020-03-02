@@ -72,3 +72,17 @@ function changeDirection() {
     bouncer.x += s;
     bouncer.y += dy;
 }
+
+function checkCollision() {
+    if (bouncer.x - bouncer.radius <= 0) {
+        bouncer.right = true;
+    }
+    if (bouncer.x + bouncer.radius >= canvas.width) {
+        boinker.right = false;
+    }
+    if (bouncer.y - bouncer.radius <= 0) {
+        boinker.up = false;
+    }
+    if (bouncer.y - bouncer.radius >= canvas.height) {
+        lose();
+    }
