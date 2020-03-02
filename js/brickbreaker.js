@@ -1,7 +1,7 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 let counter = document.getElementById("wins")
-let speed;
+let s;
 ctx.strokeStyle = "blue";
 let sc;
 let start = false;
@@ -22,3 +22,23 @@ let bouncer = {
     right: true,
     up: true
 };
+
+window.onload = function() {
+    document.getElementById("reset-button").onclick = init;
+    document.getElementById("game").onclick = init;
+    game();
+}
+document.addEventListener("keydown", getArrowKeys);
+function init() {
+    boinker.x = canvas.width / 2;
+    boinker.y = canvas.height - 20;
+    boinker.right = true;
+    boinker.up = true;
+    user.x = (canvas.width / 2) - 40;
+    user.y = canvas.height - 10;
+    sc = 1;
+    s = 0;
+    blocks = [];
+    createblocks();
+    start = true;
+}
