@@ -1,118 +1,72 @@
 ///////////////////// CONSTANTS /////////////////////////////////////
 const winningConditions = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
+  [35, 36, 37, 38],
+  [36, 37, 38, 39],
+  [37, 38, 39, 40],
+  [38, 39, 40, 41],
+  [28, 29, 30, 31],
+  [29, 30, 31, 32],
+  [30, 31, 32, 33],
+  [31, 32, 33, 34],
+  [21, 22, 23, 24],
+  [22, 23, 24, 25],
+  [23, 24, 25, 26],
+  [24, 25, 26, 27],
+  [14, 15, 16 ,17],
+  [15, 16, 17, 18],
+  [16, 17, 18, 19],
+  [17, 18, 19, 20],
+  [7, 8, 9 ,10],
+  [8, 9, 10, 11],
+  [9, 10, 11, 12],
+  [10, 11, 12, 13],
+  [0, 1, 2, 3],
+  [1, 2, 3, 4],
+  [2, 3, 4, 5],
+  [3, 4, 5, 6],
+  [35, 28, 21, 14],
+  [28, 21, 14, 7],
+  [21, 14, 7, 0],
+  [36, 29, 22, 15],
+  [29, 22, 15, 8],
+  [22, 15, 8, 1],
+  [37, 30, 23, 16],
+  [30, 23, 16, 9],
+  [23, 16, 9, 2],
+  [38, 31, 24, 17],
+  [31, 24, 17, 10],
+  [24, 17, 10, 3],
+  [39, 32, 25, 18],
+  [32, 25, 18, 11],
+  [25, 18, 11, 4],
+  [40, 33, 26, 19],
+  [33, 26, 19, 12],
+  [26, 19, 12, 5],
+  [41, 34, 27, 20],
+  [34, 27, 20, 13],
+  [27, 20, 13, 6],
+  [38, 32, 26, 20],
+  [37, 31, 25, 19],
+  [36, 30, 24, 18],
+  [35, 29, 23, 17],
+  [31, 25, 19, 13],
+  [30, 24, 18, 12],
+  [29, 23, 17, 11],
+  [28, 22, 16, 15],
+  [24, 18, 12, 6],
+  [23, 17, 11, 5],
+  [22, 16, 10, 4],
+  [21, 15, 9, 2],
+  [41, 33, 25, 17],
+  [40, 32, 24, 16],
+  [39, 31, 23, 15],
+  [38, 30, 22, 14],
+  [34, 26, 18, 10],
+  [33, 25, 27, 9],
+  [32, 24, 26, 8],
+  [31, 23, 25, 7],
+  [27, 19, 11, 3],
+  [26, 18, 10, 2],
+  [25, 17, 9, 1],
+  [24, 16, 8, 0]
 ];
-
-///////////////////// APP STATE (VARIABLES) /////////////////////////
-let board;
-let turn;
-let win;
-let determine_first_player;
-let x_wins = 0;
-let o_wins = 0;
-let ties= 0;
-
-///////////////////// CACHED ELEMENT REFERENCES /////////////////////
-const squares = Array.from(document.querySelectorAll("#board div"));
-const message = document.querySelector("h2");
-
-///////////////////// EVENT LISTENERS ///////////////////////////////
-window.onload = init;
-document.getElementById("board").onclick = takeTurn;
-document.getElementById("reset-button").onclick = init;
-document.getElementById("reset-scoreboard").onclick = resetScoreboard;
-///////////////////// FUNCTIONS /////////////////////////////////////
-function init() {
-  board = [
-    "", "", "",
-    "", "", "",
-    "", "", ""
-  ];
-
-  do {
-    var first_Player = prompt("Enter X or O to determine who goes first: ");
-    if (first_Player === null) {
-      turn = "X";
-      break;
-    } else if (first_Player === "X" || first_Player === "x") {
-      turn = "X";
-    } else if (first_Player === "O" || first_Player === "o") {
-      turn = "O";
-    } else {
-      determine_first_player = L;
-    }
-  } while (first_Player !== "X" && first_Player !== "x" && first_Player !== "O" && first_Player !== "o");
-
-  win = null;
-
-  render();
-}
-
-function render() {
-  board.forEach(function(mark, index) {
-    squares[index].textContent = mark;
-  });
-  if (win === "X") {
-    x_wins = x_wins + 1
-  }
-  else if (win === "O") {
-    o_wins = o_wins + 1
-  }
-  else if (win === "T") {
-    ties = ties + 1
-  }
-  x_score.innerHTML = x_wins
-  o_score.innerHTML = o_wins
-  tie_score.innerHTML = ties
-  message.textContent =
-    win === "T" ? "It's a tie!" : win ? `${win} wins!` : `Turn: ${turn}`;
-}
-
-function takeTurn(e) {
-  if (!win) {
-    let index = squares.findIndex(function(square) {
-      return square === e.target;
-    });
-
-    if (board[index] === "") {
-      board[index] = turn;
-      turn = turn === "X" ? "O" : "X";
-      win = getWinner();
-
-      render();
-    }
-  }
-}
-
-function getWinner() {
-  let winner = null;
-
-  winningConditions.forEach(function(condition, index) {
-    if (
-      board[condition[0]] &&
-      board[condition[0]] === board[condition[1]] &&
-      board[condition[0]] === board[condition[2]]
-    ){
-        winner = board[condition[0]];
-    }
-  });
-
-  return winner ? winner : board.includes("") ? null : "T";
-}
-
-function resetScoreboard() {
-    x_wins = 0;
-    o_wins = 0;
-    ties = 0;
-
-    x_score.innerHTML = x_wins
-    o_score.innerHTML = o_wins
-    tie_score.innerHTML = ties
-}
