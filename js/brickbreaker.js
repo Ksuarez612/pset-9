@@ -171,3 +171,19 @@ function checkCollision() {
                    }
                }
            }
+           function moveuser(pixels) {
+    user.x += pixels;
+}
+function createblocks() {
+    for (let y = 0; y <= 80; y += 40) {
+        for (let x = 0; x < canvas.width; x += canvas.width / 10) {
+            let bTemplate = {
+                x: x,
+                y: y,
+                width: canvas.width / 10,
+                height: 40
+            };
+            blocks.push(bTemplate);
+        }
+    }
+}
