@@ -187,3 +187,19 @@ function createblocks() {
         }
     }
 }
+function lose() {
+    init();
+}
+
+function win() {
+  start = false;
+  wins += 1
+  counter.innerHTML = wins
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "blue";
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 2.5;
+  ctx.textAlign = "center";
+  ctx.font = "60px Arial";
+  ctx.fillText("You Win!", canvas.width/2, (canvas.height/2) - 40);
+}
