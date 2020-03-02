@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 let counter = document.getElementById("wins")
 let speed;
 ctx.strokeStyle = "black";
-let speed_change;
+let speedc;
 let start = false;
 let blocks = [];
 let wins = 0;
@@ -14,7 +14,7 @@ let user = {
     height: 5,
     movement: 20
 };
-let boinker = {
+let bouncer = {
     x: undefined,
     y: undefined,
     radius: 10,
@@ -31,13 +31,13 @@ window.onload = function() {
 document.addEventListener("keydown", getArrowKeys);
 
 function init() {
-    boinker.x = canvas.width / 2;
-    boinker.y = canvas.height - 20;
-    boinker.right = true;
-    boinker.up = true;
+    bouncer.x = canvas.width / 2;
+    bouncer.y = canvas.height - 20;
+    bouncer.right = true;
+    bouncer.up = true;
     user.x = (canvas.width / 2) - 40;
     user.y = canvas.height - 10;
-    speed_change = 1;
+    speedc = 1;
     speed = 0;
     blocks = [];
     createblocks();
@@ -58,84 +58,84 @@ function game() {
 }
 
 function changeDirection() {
-    if (boinker.right) {
-        speed = 3 * speed_change;
+    if (bouncer.right) {
+        speed = 3 * speedc;
     }
     else {
-        speed = -3 * speed_change;
+        speed = -3 * speedc;
     }
-    if (boinker.up) {
+    if (bouncer.up) {
         dy = -3;
     }
     else {
         dy = 3;
     }
-    boinker.x += speed;
-    boinker.y += dy;
+    bouncer.x += speed;
+    bouncer.y += dy;
 }
 
 function checkCollision() {
-    if (boinker.x - boinker.radius <= 0) {
-        boinker.right = true;
+    if (bouncer.x - bouncer.radius <= 0) {
+        bouncer.right = true;
     }
-    if (boinker.x + boinker.radius >= canvas.width) {
-        boinker.right = false;
+    if (bouncer.x + bouncer.radius >= canvas.width) {
+        bouncer.right = false;
     }
-    if (boinker.y - boinker.radius <= 0) {
-        boinker.up = false;
+    if (bouncer.y - bouncer.radius <= 0) {
+        bouncer.up = false;
     }
-    if (boinker.y - boinker.radius >= canvas.height) {
+    if (bouncer.y - bouncer.radius >= canvas.height) {
         lose();
     }
 
     for (let j = 0; j < blocks.length; j++) {
-        if (boinker.y - boinker.radius <= blocks[j].y + blocks[j].height && boinker.y - boinker.radius > blocks[j].y + blocks[j].height - 5 && boinker.x >= blocks[j].x - boinker.radius && boinker.x < blocks[j].x + blocks[j].width + boinker.radius) {
-            boinker.up = false;
+        if (bouncer.y - bouncer.radius <= blocks[j].y + blocks[j].height && bouncer.y - bouncer.radius > blocks[j].y + blocks[j].height - 5 && bouncer.x >= blocks[j].x - bouncer.radius && bouncer.x < blocks[j].x + blocks[j].width + bouncer.radius) {
+            bouncer.up = false;
             ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
             blocks.splice(j, 1);
             break;
         }
-        else if (!boinker.up && boinker.y + boinker.radius >= blocks[j].y && boinker.y + boinker.radius < blocks[j].y + 12 && boinker.x >= blocks[j].x - boinker.radius && boinker.x < blocks[j].x + blocks[j].width + boinker.radius) {
-          boinker.up = true;
+        else if (!bouncer.up && bouncer.y + bouncer.radius >= blocks[j].y && bouncer.y + bouncer.radius < blocks[j].y + 12 && bouncer.x >= blocks[j].x - bouncer.radius && bouncer.x < blocks[j].x + blocks[j].width + bouncer.radius) {
+          bouncer.up = true;
           ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
           blocks.splice(j, 1);
           break;
         }
-        else if (boinker.x + boinker.radius >= blocks[j].x && boinker.x + boinker.radius < blocks[j].x + 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
-            boinker.right = false;
+        else if (bouncer.x + bouncer.radius >= blocks[j].x && bouncer.x + bouncer.radius < blocks[j].x + 10 && bouncer.y >= blocks[j].y - bouncer.radius && bouncer.y < blocks[j].y + blocks[j].height + bouncer.radius) {
+            bouncer.right = false;
             ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
             blocks.splice(j, 1);
             break;
         }
-        else if (boinker.x - boinker.radius <= blocks[j].x + blocks[j].width && boinker.x - boinker.radius > blocks[j].x + blocks[j].width - 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
-            boinker.right = true;
+        else if (bouncer.x - bouncer.radius <= blocks[j].x + blocks[j].width && bouncer.x - bouncer.radius > blocks[j].x + blocks[j].width - 10 && bouncer.y >= blocks[j].y - bouncer.radius && bouncer.y < blocks[j].y + blocks[j].height + bouncer.radius) {
+            bouncer.right = true;
             ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
             blocks.splice(j, 1);
             break;
         }
     }
 
-    if (boinker.y + boinker.radius == user.y) {
+    if (bouncer.y + bouncer.radius == user.y) {
         let a = 3;
-        const speed_change_change = a / 25;
+        const speedcc = a / 25;
         for (let i = 2; i <= 100; i += 2) {
-            if (boinker.x >= user.x - boinker.radius + i - 2 && boinker.x < user.x - boinker.radius + i) {
+            if (bouncer.x >= user.x - bouncer.radius + i - 2 && bouncer.x < user.x - bouncer.radius + i) {
                 if (i < 50) {
-                    boinker.up = true;
-                    boinker.right = false;
-                    speed = (speed >= 11) ? speed = 11 : speed + 0.5;
-                    speed_change = Math.abs(a);
+                    bouncer.up = true;
+                    bouncer.right = false;
+                    speed = (speed >= 11) ? speed = 11 : speed + 0.3;
+                    speedc = Math.abs(a);
                 }
                 else if (i >= 50) {
-                    boinker.up = true;
-                    boinker.right = true;
-                    speed = (speed >= 11) ? speed = 11 : speed + 0.5;
-                    speed_change = Math.abs(a);
+                    bouncer.up = true;
+                    bouncer.right = true;
+                    speed = (speed >= 11) ? speed = 11 : speed + 0.3;
+                    speedc = Math.abs(a);
                 }
                 break;
             }
             else {
-                a -= speed_change_change;
+                a -= speedcc;
             }
         }
     }
@@ -156,7 +156,7 @@ function checkCollision() {
 function draw() {
     ctx.strokeRect(user.x, user.y, user.width, user.height);
     ctx.beginPath();
-    ctx.arc(boinker.x, boinker.y, boinker.radius, 0, Math.PI * 2);
+    ctx.arc(bouncer.x, bouncer.y, bouncer.radius, 0, Math.PI * 2);
     ctx.stroke();
     for (let i = 0; i < blocks.length; i++) {
         ctx.strokeRect(blocks[i].x, blocks[i].y, blocks[i].width, blocks[i].height);
@@ -181,13 +181,13 @@ function moveuser(pixels) {
 function createblocks() {
     for (let y = 0; y <= 80; y += 40) {
         for (let x = 0; x < canvas.width; x += canvas.width / 10) {
-            let bottleTemplate = {
+            let bottleT = {
                 x: x,
                 y: y,
                 width: canvas.width / 10,
                 height: 40
             };
-            blocks.push(bottleTemplate);
+            blocks.push(bottleT);
         }
     }
 }
