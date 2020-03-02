@@ -42,3 +42,16 @@ function init() {
     createblocks();
     start = true;
 }
+
+function game() {
+    if (start) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        draw();
+        checkCollision();
+        changeDirection();
+        if (blocks.length === 0) {
+            win();
+        }
+    }
+    setTimeout(game, 20 - speed);
+}
