@@ -100,16 +100,41 @@ function checkCollision() {
               blocks.splice(j, 1);
               break;
             }
-            else if (boinker.x + boinker.radius >= blocks[j].x && boinker.x + boinker.radius < blocks[j].x + 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
+            else if (bouncer.x + bouncer.radius >= blocks[j].x && bouncer.x + bouncer.radius < blocks[j].x + 10 && bouncer.y >= blocks[j].y - bouncer.radius && bouncer.y < blocks[j].y + blocks[j].height + bouncer.radius) {
                 boinker.right = false;
                 ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
                 blocks.splice(j, 1);
                 break;
             }
-            else if (boinker.x - boinker.radius <= blocks[j].x + blocks[j].width && boinker.x - boinker.radius > blocks[j].x + blocks[j].width - 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
+            else if (bouncer.x - bouncer.radius <= blocks[j].x + blocks[j].width && bouncer.x - bouncer.radius > blocks[j].x + blocks[j].width - 10 && bouncer.y >= blocks[j].y - bouncer.radius && bouncer.y < blocks[j].y + blocks[j].height + bouncer.radius) {
                 boinker.right = true;
                 ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
                 blocks.splice(j, 1);
                 break;
             }
         }
+
+        if (bouncer.y + bouncer.radius == user.y) {
+                let a = 3;
+                const sc_change = a / 25;
+                for (let i = 2; i <= 100; i += 2) {
+                    if (bouncer.x >= user.x - bouncer.radius + i - 2 && bouncer.x < user.x - bouncer.radius + i) {
+                        if (i < 50) {
+                            bouncer.up = true;
+                            bouncer.right = false;
+                            s = (s >= 11) ? s = 11 : s + 0.5;
+                            sc = Math.abs(a);
+                        }
+                        else if (i >= 50) {
+                            bouncer.up = true;
+                            bouncer.right = true;
+                            s = (s >= 11) ? s = 11 : s + 0.5;
+                            sc_change = Math.abs(a);
+                        }
+                        break;
+                    }
+                    else {
+                        a -= sc_change;
+                    }
+                }
+            }
