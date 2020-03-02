@@ -86,3 +86,30 @@ function checkCollision() {
     if (bouncer.y - bouncer.radius >= canvas.height) {
         lose();
     }
+
+    for (let j = 0; j < blocks.length; j++) {
+            if (bouncer.y - bouncer.radius <= blocks[j].y + blocks[j].height && bouncer.y - bouncer.radius > blocks[j].y + blocks[j].height - 5 && bouncer.x >= blocks[j].x - bouncer.radius && bouncer.x < blocks[j].x + blocks[j].width + bouncer.radius) {
+                boinker.up = false;
+                ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+                blocks.splice(j, 1);
+                break;
+            }
+            else if (!bouncer.up && bouncer.y + bouncer.radius >= blocks[j].y && bouncer.y + bouncer.radius < blocks[j].y + 12 && bouncer.x >= blocks[j].x - bouncer.radius && bouncer.x < blocks[j].x + blocks[j].width + bouncer.radius) {
+              boinker.up = true;
+              ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+              blocks.splice(j, 1);
+              break;
+            }
+            else if (boinker.x + boinker.radius >= blocks[j].x && boinker.x + boinker.radius < blocks[j].x + 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
+                boinker.right = false;
+                ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+                blocks.splice(j, 1);
+                break;
+            }
+            else if (boinker.x - boinker.radius <= blocks[j].x + blocks[j].width && boinker.x - boinker.radius > blocks[j].x + blocks[j].width - 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
+                boinker.right = true;
+                ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+                blocks.splice(j, 1);
+                break;
+            }
+        }
