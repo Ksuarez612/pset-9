@@ -161,3 +161,13 @@ function checkCollision() {
                    ctx.strokeRect(blocks[i].x, blocks[i].y, blocks[i].width, blocks[i].height);
                }
            }
+           function getArrowKeys(event) {
+               if (start) {
+                   if (event.keyCode == 37) {
+                       moveuser(-1 * user.movement);
+                   }
+                   else if (event.keyCode == 39) {
+                       moveuser(user.movement);
+                   }
+               }
+           }
