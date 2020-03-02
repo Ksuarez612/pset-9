@@ -70,8 +70,7 @@ h1 {
   text-decoration: none;
   font-style: normal;
   font-variant: normal;
-  text-transform: none;;
-  background-color: #585858;
+  text-transform: none;
 }
 
   #h1 {
@@ -105,7 +104,7 @@ h2 {
   width: 150px;
   color: #FFFFFF
 }
-.container 
+.container {
   display: flex;
   justify-content: center;
   align-items: center;

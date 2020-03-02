@@ -58,3 +58,21 @@ h1 {
  body {
    background-color: #585858;
  }
+
+h2 {
+  font-family: Georgia,serif;
+  font-size: 45px;
+  letter-spacing: 1.6px;
+  word-spacing: 4.8px;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: uppercase;
+}
+
+img{
+  height: 500px;
+  width: 300px;
+}
