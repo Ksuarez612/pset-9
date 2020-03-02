@@ -55,3 +55,20 @@ function game() {
     }
     setTimeout(game, 20 - speed);
 }
+
+function changeDirection() {
+    if (bouncer.right) {
+        s = 3 * sc;
+    }
+    else {
+        s = -3 * sc;
+    }
+    if (bouncer.up) {
+        dy = -3;
+    }
+    else {
+        dy = 3;
+    }
+    bouncer.x += s;
+    bouncer.y += dy;
+}
