@@ -114,7 +114,7 @@ function checkCollision() {
             }
         }
 
-        if (bouncer.y + bouncer.radius == user.y) {
+          if (bouncer.y + bouncer.radius == user.y) {
                 let a = 3;
                 const sc_change = a / 25;
                 for (let i = 2; i <= 100; i += 2) {
@@ -138,3 +138,26 @@ function checkCollision() {
                     }
                 }
             }
+
+            if (user.x + user.width > canvas.width) {
+                   user.movement = 0;
+                   user.x = canvas.width - user.width;
+               }
+               else if (user.x < 0) {
+                   user.movement = 0;
+                   user.x = 0;
+               }
+               else {
+                   user.movement = 20;
+               }
+           }
+
+           function draw() {
+               ctx.strokeRect(user.x, user.y, user.width, user.height);
+               ctx.beginPath();
+               ctx.arc(bouncer.x, bouncer.y, bouncer.radius, 0, Math.PI * 2);
+               ctx.stroke();
+               for (let i = 0; i < blocks.length; i++) {
+                   ctx.strokeRect(blocks[i].x, blocks[i].y, blocks[i].width, blocks[i].height);
+               }
+           }
