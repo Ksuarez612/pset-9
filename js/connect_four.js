@@ -124,3 +124,38 @@ function init() {
 
   render();
 }
+
+function render() {
+  board.forEach(function(mark, index) {
+    circle[index].textContent = mark;
+  });
+
+  message.textContent =
+    win === "T" ? "It's a tie!" : win ? `${win} wins!` : `Turn: ${turn}`;
+}
+
+function takeTurn(e) {
+
+ if (e.target.id == "board") {
+    return false;
+  }
+
+if (!win) {
+let index = circle.findIndex(function(circle) {
+  return circle === e.target;
+});
+
+
+let row1 = index % 7;
+
+if (board[index] === "") {
+
+  while (board[index + 7] === "") {
+    let i = index + 7;
+    document.getElementById("circle" + i + "").classList.add(turn);
+    board[i] = turn;
+    document.getElementById("circle" + index + "").classList.remove(turn);
+    board[index] = "";
+    index = i;
+
+  }
