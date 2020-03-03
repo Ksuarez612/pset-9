@@ -72,8 +72,8 @@ h1 {
   width: 456px;
   margin-left: auto;
   margin-right: auto;
-  color: blue;
 }
+
 
 #reset-scoreboard:hover {
   background-color: black;
@@ -212,10 +212,10 @@ align-items: center;
 }
 
 #reset-button {
-  background-color: white;
+  background-color: #b8b8b8;
   border: 1px solid white;
-  color: black;
-  font-size: 21px;
+  color: white;
+  font-size: 25px;
   line-height: 55px;
   margin: auto;
   margin-top: 5px;
@@ -225,8 +225,8 @@ align-items: center;
 }
 
 #reset-button:hover {
-  background-color: black;
-  color: white;
+  background-color: lightgray;
+  color: black;
   cursor: pointer;
 }
 
@@ -254,8 +254,10 @@ h2 {
   user-select: none;
   width: 150px;
   color: white;
+  background-color: #b8b8b8
 }
 #table {
   margin-left: auto;
   margin-right: auto;
+  background-color: #b8b8b8
 }
