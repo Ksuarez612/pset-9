@@ -96,13 +96,14 @@ h2 {
   margin: 2%;
 }
 .wins {
-  border: 1px solid black;
+  border: 1px solid white;
   font-size: 20px;
   height: 50px;
   line-height: 50px;
   user-select: none;
   width: 150px;
-  color: #FFFFFF
+  color: #FFFFFF;
+  background-color: 
 }
 .container {
   display: flex;
