@@ -81,3 +81,6 @@ let yellow_wins = 0;
 let ties = 0;
 let first = "Red";
 let winner;
+///////////////////// CACHED ELEMENT REFERENCES /////////////////////
+const circle = Array.from(document.querySelectorAll("#board div"));
+const message = document.querySelector("h2");
