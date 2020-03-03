@@ -56,6 +56,8 @@ h1 {
 }
  body {
    background-color: #585858;
+   color: white;
+   text-align: center;
  }
 
 
@@ -70,6 +72,7 @@ h1 {
   width: 456px;
   margin-left: auto;
   margin-right: auto;
+  color: blue;
 }
 
 #reset-scoreboard:hover {
@@ -230,15 +233,27 @@ align-items: center;
 h2 {
   font-size: 50px;
   margin: 5px;
+  font-family: Georgia,serif;
+  font-size: 65px;
+  letter-spacing: 2.6px;
+  word-spacing: 4.8px;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .wins {
-  border: 1px solid rgba(0, 0, 0, 0.75);
+  border: 2px solid white;
   font-size: 20px;
   height: 50px;
   line-height: 50px;
   user-select: none;
   width: 150px;
+  color: white;
 }
 #table {
   margin-left: auto;
