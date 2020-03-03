@@ -159,3 +159,72 @@ if (board[index] === "") {
     index = i;
 
   }
+  if (board[index] === "") {
+    document.getElementById("circle" + index + "").classList.add(turn);
+    board[index] = turn;
+
+  }
+
+  }
+  else if (board[index] !== "") {
+    if (board[row1] === "") {
+      while (board[row1 + 7] === "") {
+        let i = row1 + 7;
+        document.getElementById("circle" + i + "").classList.add(turn);
+        board[i] = turn;
+        document.getElementById("circle" + row1 + "").classList.remove(turn);
+        board[row1] = "";
+        row1 = i;
+
+      }
+      if (board[row1] === "") {
+        document.getElementById("circle" + row1 + "").classList.add(turn);
+        board[row1] = turn;
+
+      }
+
+    }
+    else if (board[row1] !== "") {
+      return false;
+    }
+   }
+
+
+
+  turn = turn === "Red" ? "Yellow" : "Red";
+  win = getWinner();
+  if (win === "T") {
+    ties++;
+    document.getElementById("tie_score").innerHTML = ties;
+  }
+
+  render();
+}
+}
+
+
+function getWinner() {
+  let winner = null;
+
+  winningConditions.forEach(function(condition, index) {
+    if (
+      board[condition[0]] &&
+      board[condition[0]] === board[condition[1]] &&
+      board[condition[1]] === board[condition[2]] &&
+      board[condition[2]] === board[condition[3]]
+    ) {
+      winner = board[condition[0]];
+      if (winner === "Red") {
+        red_wins++;
+        document.getElementById("red_score").innerHTML = red_wins;
+
+      }
+      else if (winner === "Yellow") {
+        yellow_wins++;
+        document.getElementById("yellow_score").innerHTML = yellow_wins;
+
+      }
+
+    }
+
+  }};
