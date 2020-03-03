@@ -91,3 +91,36 @@ document.getElementById("reset-button").onclick = init;
 document.getElementById("redFirst").onclick = redFirst;
 document.getElementById("yellowFirst").onclick = yellowFirst;
 document.getElementById("reset-scoreboard").onclick = resetScoreboard;
+///////////////////// FUNCTIONS /////////////////////////////////////
+
+function init() {
+  board = [
+    "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "",
+  ];
+
+  board.forEach(function(mark, index) {
+    if (circle[index].classList.contains("Red")) {
+      circle[index].classList.remove("Red")
+    }
+    if (circle[index].classList.contains("Yellow")) {
+      circle[index].classList.remove("Yellow")
+    }
+  });
+
+  turn = "Red"
+  win = null
+
+  if (first === "Red") {
+    turn = "Red"
+  }
+  else if (first === "Yellow") {
+    turn = "Yellow"
+  }
+
+  render();
+}
