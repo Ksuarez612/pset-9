@@ -125,6 +125,7 @@ function init() {
   render();
 }
 
+
 function render() {
   board.forEach(function(mark, index) {
     circle[index].textContent = mark;
@@ -227,11 +228,12 @@ function getWinner() {
 
     }
 
-  }};
-  return winner ? winner : board.includes("") ? null : "T";
-  }
+  });
 
-  function playAgain() {
+  return winner ? winner : board.includes("") ? null : "T";
+}
+
+function playAgain() {
   board.forEach(function(mark, index) {
     if (circle[index].classList.contains("Red")) {
       circle[index].classList.remove("Red")
@@ -241,9 +243,9 @@ function getWinner() {
     }
   });
   init()
-  }
+}
 
-  function resetScoreboard() {
+function resetScoreboard() {
   red_wins = 0;
   yellow_wins = 0;
   ties = 0;
@@ -251,11 +253,33 @@ function getWinner() {
   document.getElementById("red_score").innerHTML = red_wins;
   document.getElementById("tie_score").innerHTML = ties;
   document.getElementById("yellow_score").innerHTML = yellow_wins;
-  }
+}
 
-  function redFirst(){
+function redFirst(){
   init();
 
   document.getElementById("switch").innerHTML = "Turn: Red";
   turn = "Red";
   first = "Red"
+
+
+}
+
+function yellowFirst(){
+  init();
+
+  document.getElementById("switch").innerHTML = "Turn: Yellow";
+  turn = "Yellow";
+  first = "Yellow"
+
+}
+
+function resetScoreboard() {
+    red_wins = 0;
+    yellow_wins = 0;
+    ties = 0;
+
+    document.getElementById("red_score").innerHTML = red_wins;
+    document.getElementById("tie_score").innerHTML = ties;
+    document.getElementById("yellow_score").innerHTML = yellow_wins;
+  }
