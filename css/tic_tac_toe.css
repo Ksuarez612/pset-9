@@ -48,7 +48,7 @@ h1 {
   font-size: 65px;
   letter-spacing: 2.6px;
   word-spacing: 4.8px;
-  color: lightgray;
+  color: white;
   font-weight: 700;
   text-decoration: none;
   font-style: italic;
@@ -74,21 +74,17 @@ h1 {
 }
 
   #h1 {
-  margin: 0 auto;
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 38px;
-  letter-spacing: 6px;
-  word-spacing: 2px;
-  color: white;
-  font-weight: bold;
+  font-family: Georgia,serif;
+  font-size: 65px;
+  letter-spacing: 2.6px;
+  word-spacing: 4.8px;
+  color: #FFFFFF;
+  font-weight: 700;
   text-decoration: none;
-  font-style: normal;
-  font-variant: normal;
-  text-transform: none;
-  font-size: 50px;
-  margin: 2%;
   font-style: italic;
-  color: #FFFFFF
+  font-variant: normal;
+  text-transform: uppercase;
+  color: lightgray;
 }
 h2 {
   font-size: 50px;
